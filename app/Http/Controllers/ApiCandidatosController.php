@@ -37,17 +37,17 @@ class ApiCandidatosController extends Controller
 
 		$confirmation_code = str_random(30);
 
-		// $imageName = $request['nome'] . " | " . $request['email'] . '.' . 
-		// $request->file('arquivo')->getClientOriginalExtension();
-
-		// $request->file('arquivo')->move(base_path() . '/public/uploads/', $imageName);
-
 		$nome = $request['nome'];
 		$mail = $request['email'];
+		
+		$file = $request->arquivo;
+		$data = file_get_contents($file);
+		$uploadfile = base_path().DIRECTORY_SEPARATOR. 'public' .DIRECTORY_SEPARATOR. 'uploads' .DIRECTORY_SEPARATOR. $nome . ' - ' . $mail . '.' .'PDF';
+		file_put_contents($uploadfile, $data);
 
 		$candidato = $request->all();
 		$candidato['cod_confirmacao'] = $confirmation_code;
-		// $candidato['arquivo'] = $imageName;
+		$candidato['arquivo'] = $nome . ' - ' . $mail . '.' .'PDF';
 		Candidato::create($candidato);
 
 		$data = array('confirmacao' => $confirmation_code);
