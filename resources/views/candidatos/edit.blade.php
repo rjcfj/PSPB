@@ -21,7 +21,7 @@
             </ul>
         </div>
     @endif
-    {!! Form::model($candidato, ['method' => 'PATCH','route' => ['candidato.update', $candidato->id]]) !!}
+    {!! Form::model($candidato, ['method' => 'PATCH', 'files' => true), 'route' => ['candidato.update', $candidato->id]]) !!}
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
@@ -32,7 +32,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>E-mail:</strong>
-                {!! Form::text('email', null, array('placeholder' => 'Seu Email','class' => 'form-control')) !!}
+                {!! Form::email('email', null, array('placeholder' => 'Seu Email','class' => 'form-control')) !!}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">

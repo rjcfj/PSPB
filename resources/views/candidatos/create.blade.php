@@ -25,7 +25,7 @@
 </div>
 @endif
 @if (Auth::check())
-{!! Form::open(array('route' => 'candidato.store','method'=>'POST')) !!}
+{!! Form::open(array('route' => 'candidato.store','method'=>'POST', 'files' => true)) !!}
 @else
 {!! Form::open(array('url' => 'jobcandidatos/store','method'=>'POST', 'files' => true)) !!}
 @endif
@@ -39,7 +39,7 @@
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>Email:</strong>
-            {!! Form::text('email', null, array('placeholder' => 'Seu Email','class' => 'form-control')) !!}
+            {!! Form::email('email', null, array('placeholder' => 'Seu Email','class' => 'form-control')) !!}
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
