@@ -53,10 +53,10 @@ class CandidatosController extends Controller
 		$nome = $request['nome'];
 		$mail = $request['email'];
 
-		$imageName = $request['nome'] . " | " . $request['email'] . '.' . 
+		$imageName = $nome . ' - ' . $mail . '.' . 
 		$request->file('arquivo')->getClientOriginalExtension();
 
-		$request->file('arquivo')->move(base_path() . '/public/uploads/', $imageName);
+		$request->file('arquivo')->move(base_path().DIRECTORY_SEPARATOR. 'public' .DIRECTORY_SEPARATOR. 'uploads' .DIRECTORY_SEPARATOR, $imageName);
 
 		$confirmation_code = str_random(30);
 
