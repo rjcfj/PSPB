@@ -25,13 +25,13 @@ http://localhost:8000/api/job <br>
 <br>
 POST<br>
 http://localhost:8000/api/candidato <br>
--> {"nome":"#","email":"#","cpf":"#","telefone":"#","tecnica":"#","sociais":"#","experiencia":"#","arquivo":"Local ou Web","job_id":"#"}
+-> {"nome":"#","email":"#","cpf":"#","telefone":"#","tecnica":"#","sociais":"#","experiencia":"#","arquivo":"Local ou Web","job_id":"#"}<br>
 http://localhost:8000/api/job <br>
 -> {"nome":"#","descricao":"#","local":"#","remoto":"Sim ou Não"}
 <br>
 PUT<br>
 http://localhost:8000/api/candidato/1<br>
--> {"nome":"#","email":"#","cpf":"#","telefone":"#","tecnica":"#","sociais":"#","experiencia":"#","arquivo":"Local ou Web","job_id":"#"}
+-> {"nome":"#","email":"#","cpf":"#","telefone":"#","tecnica":"#","sociais":"#","experiencia":"#","arquivo":"Local ou Web","job_id":"#"}<br>
 http://localhost:8000/api/job/1<br>
 -> {"nome":"#","descricao":"#","local":"#","remoto":"Sim ou Não"}
 <br>
