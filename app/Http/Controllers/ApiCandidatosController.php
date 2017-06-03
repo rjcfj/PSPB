@@ -62,10 +62,20 @@ class ApiCandidatosController extends Controller
 	public function update(Request $request, $id)
 	{
 		try {
+			$nome = $request['nome'];
+			$mail = $request['email'];
+			
 			$candidato = Candidato::findOrFail($id);
-
-			$candidato->fill($request->all());
-			$candidato->save();
+			
+			$file = $request->arquivo;
+			$data = file_get_contents($file);
+			$uploadfile = base_path().DIRECTORY_SEPARATOR. 'public' .DIRECTORY_SEPARATOR. 'uploads' .DIRECTORY_SEPARATOR. $nome . ' - ' . $mail . '.' .'PDF';
+			file_put_contents($uploadfile, $data);
+			
+			$candidato = $request->all();
+			$candidato['arquivo'] = $nome . ' - ' . $mail . '.' .'PDF';
+			
+			Candidato::find($id)->update($candidato);
 
 			return response()->json($candidato);
 		} catch (Illuminate\Database\Eloquent\ModelNotFoundException $e) {
