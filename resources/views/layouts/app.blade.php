@@ -41,6 +41,7 @@
                         @else
                         <li><a href="{{ url('jobs') }}">Jobs</a></li>
                         <li><a href="{{ url('candidatos') }}">Candidatos</a></li>
+                        <li><a href="{{ url('usuarios') }}">Usuarios</a></li>
                         @endif
                     </ul>
                     <!-- Right Side Of Navbar -->

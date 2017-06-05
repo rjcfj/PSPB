@@ -32,7 +32,7 @@
         </div>
         <div class="col-md-2 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">Usuário</div>
+                <div class="panel-heading"><a href="{{ url('/usuarios') }}">Usuários</a></div>
 
                 <div class="panel-body">
                     {{ \App\User::count() }}

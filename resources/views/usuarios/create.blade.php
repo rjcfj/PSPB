@@ -4,10 +4,10 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Editar job</h2>
+                <h2>Criar novo Usuário</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('job.index') }}"> Voltar</a>
+                <a class="btn btn-primary" href="{{ route('usuarios.index') }}"> Voltar</a>
             </div>
         </div>
     </div>
@@ -21,34 +21,34 @@
             </ul>
         </div>
     @endif
-    {!! Form::model($job, ['method' => 'PATCH','route' => ['job.update', $job->id]]) !!}
+    {!! Form::open(array('route' => 'usuarios.store','method'=>'POST')) !!}
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Nome:</strong>
-                {!! Form::text('nome', null, array('placeholder' => 'Nome de Função','class' => 'form-control')) !!}
+                {!! Form::text('name', null, array('placeholder' => 'Nome','class' => 'form-control')) !!}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Descrição:</strong>
-                {!! Form::textarea('descricao', null, array('placeholder' => 'Descrição','class' => 'form-control')) !!}
+                <strong>Email:</strong>
+                {!! Form::text('email', null, array('placeholder' => 'Email','class' => 'form-control')) !!}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Local:</strong>
-                {!! Form::text('local', null, array('placeholder' => 'Onde é?','class' => 'form-control')) !!}
+                <strong>Senha:</strong>
+                {!! Form::password('password', array('placeholder' => 'Senha','class' => 'form-control')) !!}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Remoto:</strong>
-                {!! Form::select('remoto', array('Sim' => 'Sim', 'Não' => 'Não'), null, array('class' => 'form-control')) !!}
+                <strong>Confirme a Senha:</strong>
+                {!! Form::password('confirm-password', array('placeholder' => 'Confirme a Senha','class' => 'form-control')) !!}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Atualizar</button>
+                <button type="submit" class="btn btn-primary">Salvar</button>
         </div>
     </div>
     {!! Form::close() !!}

@@ -29,7 +29,7 @@ Route::group(['middleware' => ['auth']], function() {
 
 	Route::get('/home', 'HomeController@index');
 
-	// Route::resource('users','UserController');
+	Route::resource('usuarios','UsuarioController');
 
 	Route::get('jobs',['as'=>'job.index','uses'=>'JobsController@index']);
 	Route::get('jobs/create',['as'=>'job.create','uses'=>'JobsController@create']);
