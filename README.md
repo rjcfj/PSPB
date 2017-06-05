@@ -38,6 +38,23 @@ Depois de criar seu banco de dados e fornecer as credenciais, você precisará e
 php artisan migrate
 php artisan db:seed
 ~~~~
+
+## Para quem usa o MariaDB ou versões mais antigas do MySQL, você pode atingir esse erro ao tentar executar migrações:
+
+#### [Illuminate \ Database \ QueryException] SQLSTATE [42000]: erro de sintaxe ou violação de acesso: 1071 A chave especificada era muito longa; O comprimento máximo da chave é de 767 bytes (SQL: alter table usersadd unique users_email_unique( email))
+
+Migrações para corrigir isso, tudo o que você precisa fazer é editar seu AppServiceProvider.php
+
+~~~~
+use Illuminate\Support\Facades\Schema;
+
+public function boot()
+{
+    Schema::defaultStringLength(191);
+}
+~~~~
+Depois disso, tudo deve funcionar de forma normal.
+
 Inicie um servidor de desenvolvimento local com `php artisan serve` E, visite http://localhost:8000
 
 ## Login:
