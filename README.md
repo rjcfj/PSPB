@@ -48,12 +48,19 @@ Se você prosseguisse com os dados falsos, um usuário deveria ter sido criado p
 ## API (JSON)
 Micro Serviços (POSTMAN)
 
-## GET
+## GET (Lista)
 
 #### Candidato
 http://localhost:8000/api/candidato
 #### Job
 http://localhost:8000/api/job
+
+## GET (Buscar)
+
+#### Candidato
+http://localhost:8000/api/candidato/1
+#### Job
+http://localhost:8000/api/job/1
 
 ## POST
 #### Candidato
