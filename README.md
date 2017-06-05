@@ -13,15 +13,12 @@ Candidato de Emprego
             MAIL_PASSWORD=### <br>
             MAIL_ENCRYPTION=tls <br>
 5 - php artisan migrate <br>
-6 - php artisan db:seed
+6 - php artisan db:seed <br>
 7 - php artisan serve <br><br>
 8 - Login:
-    Email: admin@admin.com
-    Senha: admin
-
-
-
-<br>
+    Email: admin@admin.com <br>
+    Senha: admin <br><br>
+    
 #########################################################
 <br>
 API - Seviços (JSON)
