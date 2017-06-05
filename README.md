@@ -7,38 +7,35 @@ Apache 2.4.23 / PHP 7.1.2 / MYSQL 5.7.17
 ## Instalação
 
 ~~~~
-1 - git clone <br>
-2 - composer update <br>
-3 - Criar .ENV <br>
+git clone
+composer update
+Criar .ENV
 ~~~~
 
-Você também deve adicionar suas informações de banco de dados e email em seu arquivo .env: <br>
+Você também deve adicionar suas informações de banco de dados e email em seu arquivo .env:
 ~~~~ 
-BD - Usuario e Senha de banco de dados <br>
-MAIL -  MAIL_DRIVER=smtp <br>
-        MAIL_HOST=smtp.gmail.com <br>
+BD - Usuario e Senha de banco de dados
+MAIL -  MAIL_DRIVER=smtp
+        MAIL_HOST=smtp.gmail.com
         MAIL_PORT=587 <br>
-        MAIL_USERNAME=###@gmail.com <br>
-        MAIL_PASSWORD=### <br>
-        MAIL_ENCRYPTION=tls <br>
+        MAIL_USERNAME=###@gmail.com
+        MAIL_PASSWORD=###
+        MAIL_ENCRYPTION=tls
         
 ~~~~ 
 Depois de criar seu banco de dados e fornecer as credenciais, você precisará executar a partir da linha de comando:
 ~~~~
-php  artisan migrate
+php artisan migrate
 php artisan db:seed
 ~~~~
-
-~~~~
-7 - php artisan serve 
-~~~~ 
+Inicie um servidor de desenvolvimento local com `php artisan serve` E, visite http://localhost:8000
 
 ## Login:
 
-Email: admin@admin.com <br>
-Senha: admin <br><br>
-    
-~~~~ 
+Se você prosseguisse com os dados falsos, um usuário deveria ter sido criado para você com as seguintes credenciais de login:
+
+>**email:** `admin@admin.com`   
+>**senha:** `admin`
     
 #########################################################
 <br>
