@@ -1,6 +1,8 @@
 # PSPB
 Candidato de Emprego
 
+Servidor: Apache 2.4.23 / PHP 7.1.2 / MYSQL 5.7.17
+
 1 - git clone <br>
 2 - composer update <br>
 3 - Criar .ENV <br>
