@@ -39,6 +39,7 @@
                         @if (Auth::guest())
                         <li><a href="{{ url('/home') }}">Home</a></li>
                         @else
+                        <li><a href="{{ url('/home') }}">Home</a></li>
                         <li><a href="{{ url('jobs') }}">Jobs</a></li>
                         <li><a href="{{ url('candidatos') }}">Candidatos</a></li>
                         <li><a href="{{ url('usuarios') }}">Usuarios</a></li>
