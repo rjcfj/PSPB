@@ -44,39 +44,51 @@ Se você prosseguisse com os dados falsos, um usuário deveria ter sido criado p
 
 >**email:** `admin@admin.com`   
 >**senha:** `admin`
-    
-<hr>
 
 ## API (JSON)
 Micro Serviços (POSTMAN)
 
-<br>
-
 ## GET
+
+#### Candidato
 http://localhost:8000/api/candidato
+~~~~
+{"nome":"#","email":"#","cpf":"#","telefone":"#","tecnica":"#","sociais":"#","experiencia":"#","arquivo":"Local ou Web","job_id":"#"}
+~~~~
+#### Job
 http://localhost:8000/api/job
 ~~~~
-Candidato - {"nome":"#","email":"#","cpf":"#","telefone":"#","tecnica":"#","sociais":"#","experiencia":"#","arquivo":"Local ou Web","job_id":"#"}
-Job - {"nome":"#","descricao":"#","local":"#","remoto":"Sim ou Não"}
+{"nome":"#","descricao":"#","local":"#","remoto":"Sim ou Não"}
 ~~~~
 
 ## POST
-http://localhost:8000/api/candidato/1
+http://localhost:8000/api/candidato/1 <br>
 http://localhost:8000/api/job/1
+
+#### Candidato
 ~~~~
-Candidato - {"nome":"#","email":"#","cpf":"#","telefone":"#","tecnica":"#","sociais":"#","experiencia":"#","arquivo":"Local ou Web","job_id":"#"}
-Job - {"nome":"#","descricao":"#","local":"#","remoto":"Sim ou Não"} 
+{"nome":"#","email":"#","cpf":"#","telefone":"#","tecnica":"#","sociais":"#","experiencia":"#","arquivo":"Local ou Web","job_id":"#"}
+~~~~
+
+#### Job
+~~~~
+{"nome":"#","descricao":"#","local":"#","remoto":"Sim ou Não"} 
 ~~~~
 
 ## PUT
+#### Candidato
 http://localhost:8000/api/candidato/1
-http://localhost:8000/api/job/1
-
 ~~~~
 {"nome":"#","email":"#","cpf":"#","telefone":"#","tecnica":"#","sociais":"#","experiencia":"#","arquivo":"Local ou Web","job_id":"#"}
+~~~~
+#### Job
+http://localhost:8000/api/job/1
+~~~~
 {"nome":"#","descricao":"#","local":"#","remoto":"Sim ou Não"}
 ~~~~
 
 ## DELETE
+#### Candidato
 http://localhost:8000/api/candidato/1
+#### Job
 http://localhost:8000/api/job/1
