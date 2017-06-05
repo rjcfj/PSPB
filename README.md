@@ -20,9 +20,9 @@ BD:
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=your-db-name
-DB_USERNAME=your-db-username
-DB_PASSWORD=your-db-password
+DB_DATABASE=###
+DB_USERNAME=###
+DB_PASSWORD=###
 
 MAIL:
 MAIL_DRIVER=smtp
