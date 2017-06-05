@@ -14,13 +14,21 @@ Criar .ENV
 
 Você também deve adicionar suas informações de banco de dados e email em seu arquivo .env:
 ~~~~ 
-BD - Usuario e Senha de banco de dados
-MAIL -  MAIL_DRIVER=smtp
-        MAIL_HOST=smtp.gmail.com
-        MAIL_PORT=587 <br>
-        MAIL_USERNAME=###@gmail.com
-        MAIL_PASSWORD=###
-        MAIL_ENCRYPTION=tls
+BD: 
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=your-db-name
+DB_USERNAME=your-db-username
+DB_PASSWORD=your-db-password
+
+MAIL:
+MAIL_DRIVER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=###@gmail.com
+MAIL_PASSWORD=###
+MAIL_ENCRYPTION=tls
         
 ~~~~ 
 Depois de criar seu banco de dados e fornecer as credenciais, você precisará executar a partir da linha de comando:
@@ -37,26 +45,38 @@ Se você prosseguisse com os dados falsos, um usuário deveria ter sido criado p
 >**email:** `admin@admin.com`   
 >**senha:** `admin`
     
-#########################################################
+<hr>
+
+## API (JSON)
+Micro Serviços (POSTMAN)
+
 <br>
-API - Seviços (JSON)
-<br>
-GET<br>
-http://localhost:8000/api/candidato <br>
-http://localhost:8000/api/job <br>
-<br>
-POST<br>
-http://localhost:8000/api/candidato <br>
--> {"nome":"#","email":"#","cpf":"#","telefone":"#","tecnica":"#","sociais":"#","experiencia":"#","arquivo":"Local ou Web","job_id":"#"}<br>
-http://localhost:8000/api/job <br>
--> {"nome":"#","descricao":"#","local":"#","remoto":"Sim ou Não"}
-<br>
-PUT<br>
-http://localhost:8000/api/candidato/1<br>
--> {"nome":"#","email":"#","cpf":"#","telefone":"#","tecnica":"#","sociais":"#","experiencia":"#","arquivo":"Local ou Web","job_id":"#"}<br>
-http://localhost:8000/api/job/1<br>
--> {"nome":"#","descricao":"#","local":"#","remoto":"Sim ou Não"}
-<br>
-DELETE<br>
-http://localhost:8000/api/candidato/1<br>
-http://localhost:8000/api/job/1<br>
+
+## GET
+http://localhost:8000/api/candidato
+http://localhost:8000/api/job
+~~~~
+Candidato - {"nome":"#","email":"#","cpf":"#","telefone":"#","tecnica":"#","sociais":"#","experiencia":"#","arquivo":"Local ou Web","job_id":"#"}
+Job - {"nome":"#","descricao":"#","local":"#","remoto":"Sim ou Não"}
+~~~~
+
+## POST
+http://localhost:8000/api/candidato/1
+http://localhost:8000/api/job/1
+~~~~
+Candidato - {"nome":"#","email":"#","cpf":"#","telefone":"#","tecnica":"#","sociais":"#","experiencia":"#","arquivo":"Local ou Web","job_id":"#"}
+Job - {"nome":"#","descricao":"#","local":"#","remoto":"Sim ou Não"} 
+~~~~
+
+## PUT
+http://localhost:8000/api/candidato/1
+http://localhost:8000/api/job/1
+
+~~~~
+{"nome":"#","email":"#","cpf":"#","telefone":"#","tecnica":"#","sociais":"#","experiencia":"#","arquivo":"Local ou Web","job_id":"#"}
+{"nome":"#","descricao":"#","local":"#","remoto":"Sim ou Não"}
+~~~~
+
+## DELETE
+http://localhost:8000/api/candidato/1
+http://localhost:8000/api/job/1
