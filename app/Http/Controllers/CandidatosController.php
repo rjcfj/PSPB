@@ -16,12 +16,32 @@ class CandidatosController extends Controller
 
 	public function file($filename){
 
-
 		$entry = Candidato::where('arquivo', '=', $filename)->firstOrFail();
 		$file = Storage::disk('uploads')->get($entry->arquivo);
 
+		$ultimas = substr($filename, -4);
+		$tirar_ponto = str_replace("." , "" , $ultimas);
+
+		switch ($tirar_ponto) {
+			case "jpeg":			
+			$tipo = 'application/image/jpeg';
+			break;
+			case "jpg":			
+			$tipo = 'application/image/jpeg';
+			break;
+			case "bmp":
+			$tipo = 'application/image/bmp';
+			break;
+			case "png":
+			$tipo =  'application/image/png';
+			break;
+			case "pdf":
+			$tipo = 'application/pdf';
+			break;
+		}
+
 		$response = FacadeResponse::make($file, 200);
-		$response->header('Content-Type', 'application/pdf');
+		$response->header('Content-Type', $tipo);
 		return $response;
 	}
 
