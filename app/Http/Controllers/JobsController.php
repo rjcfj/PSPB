@@ -10,7 +10,14 @@ class JobsController extends Controller
 {
 	public function index(Request $request)
 	{
-		$job = Job::orderBy('id','DESC')->paginate(5);
+
+		if ($request->input('idata') || $request->input('fdata')) {
+			$job = Job::whereDate('data_ini', [$request->input('idata')])
+			->whereDate('data_fim', [$request->input('fdata')])->paginate(5);			
+		} else {
+			$job = Job::orderBy('id','DESC')->paginate(5);
+		}
+
 		return view('jobs.index',compact('job'))
 		->with('i', ($request->input('page', 1) - 1) * 5);
 	}

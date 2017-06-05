@@ -19,6 +19,8 @@ class CreateJobsTable extends Migration
             $table->longText('descricao');
             $table->string('local');
             $table->enum('remoto', ['Sim', 'Não']);
+            $table->date('data_ini');
+            $table->date('data_fim');
             $table->timestamps();
             $table->softDeletes();
         });
