@@ -1,25 +1,44 @@
-# PSPB
-Candidato de Emprego
+# PSPB para Laravel 5.4
+Candidato de Emprego, implemente um pequeno sistema para gerenciamento de currículos utilizando o conceito de micro serviços
 
-Servidor: Apache 2.4.23 / PHP 7.1.2 / MYSQL 5.7.17
+## Servidor:
+Apache 2.4.23 / PHP 7.1.2 / MYSQL 5.7.17
+
+## Instalação
+
+~~~~
 
 1 - git clone <br>
 2 - composer update <br>
 3 - Criar .ENV <br>
-4 - Configuração de .ENV (BD e MAIL) <br>
-    BD - Usuario e Senha de banco de dados <br>
-    MAIL -  MAIL_DRIVER=smtp <br>
-            MAIL_HOST=smtp.gmail.com <br>
-            MAIL_PORT=587 <br>
-            MAIL_USERNAME=###@gmail.com <br>
-            MAIL_PASSWORD=### <br>
-            MAIL_ENCRYPTION=tls <br>
-5 - php artisan migrate <br>
-6 - php artisan db:seed <br>
-7 - php artisan serve <br><br>
-8 - Login:<br>
-    Email: admin@admin.com <br>
-    Senha: admin <br><br>
+
+Você também deve adicionar suas informações de banco de dados e email em seu arquivo .env: <br>
+~~~~ 
+BD - Usuario e Senha de banco de dados <br>
+MAIL -  MAIL_DRIVER=smtp <br>
+        MAIL_HOST=smtp.gmail.com <br>
+        MAIL_PORT=587 <br>
+        MAIL_USERNAME=###@gmail.com <br>
+        MAIL_PASSWORD=### <br>
+        MAIL_ENCRYPTION=tls <br>
+        
+~~~~ 
+Depois de criar seu banco de dados e fornecer as credenciais, você precisará executar a partir da linha de comando:
+~~~~
+php  artisan migrate
+php artisan db:seed
+~~~~
+
+~~~~
+7 - php artisan serve 
+~~~~ 
+
+## Login:
+
+Email: admin@admin.com <br>
+Senha: admin <br><br>
+    
+~~~~ 
     
 #########################################################
 <br>
