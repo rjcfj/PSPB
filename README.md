@@ -52,30 +52,23 @@ Micro Serviços (POSTMAN)
 
 #### Candidato
 http://localhost:8000/api/candidato
-~~~~
-{"nome":"#","email":"#","cpf":"#","telefone":"#","tecnica":"#","sociais":"#","experiencia":"#","arquivo":"Local ou Web","job_id":"#"}
-~~~~
 #### Job
 http://localhost:8000/api/job
-~~~~
-{"nome":"#","descricao":"#","local":"#","remoto":"Sim ou Não"}
-~~~~
 
 ## POST
-http://localhost:8000/api/candidato/1 <br>
-http://localhost:8000/api/job/1
-
 #### Candidato
+http://localhost:8000/api/candidato/1
 ~~~~
 {"nome":"#","email":"#","cpf":"#","telefone":"#","tecnica":"#","sociais":"#","experiencia":"#","arquivo":"Local ou Web","job_id":"#"}
 ~~~~
-
 #### Job
+http://localhost:8000/api/job/1
 ~~~~
 {"nome":"#","descricao":"#","local":"#","remoto":"Sim ou Não"} 
 ~~~~
 
 ## PUT
+
 #### Candidato
 http://localhost:8000/api/candidato/1
 ~~~~
@@ -88,6 +81,7 @@ http://localhost:8000/api/job/1
 ~~~~
 
 ## DELETE
+
 #### Candidato
 http://localhost:8000/api/candidato/1
 #### Job
