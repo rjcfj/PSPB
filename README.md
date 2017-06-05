@@ -15,7 +15,7 @@ Candidato de Emprego
 5 - php artisan migrate <br>
 6 - php artisan db:seed <br>
 7 - php artisan serve <br><br>
-8 - Login:
+8 - Login:<br>
     Email: admin@admin.com <br>
     Senha: admin <br><br>
     
