@@ -2,7 +2,7 @@
 Candidato de Emprego, implemente um pequeno sistema para gerenciamento de currículos utilizando o conceito de micro serviços
 
 ## Servidor:
-Apache 2.4.23 / PHP 7.1.2 / MYSQL 5.7.17
+Apache 2.4.23 / PHP 7.1.2 / MySQL 5.7.17
 
 ## Instalação
 
