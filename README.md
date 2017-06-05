@@ -9,7 +9,9 @@ Apache 2.4.23 / PHP 7.1.2 / MYSQL 5.7.17
 ~~~~
 git clone
 composer update
-Criar .ENV
+php -r "file_exists('.env') || copy('.env.example', '.env');"
+php artisan key:generate
+
 ~~~~
 
 Você também deve adicionar suas informações de banco de dados e email em seu arquivo .env:
