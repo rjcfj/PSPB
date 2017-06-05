@@ -7,10 +7,10 @@ Apache 2.4.23 / PHP 7.1.2 / MYSQL 5.7.17
 ## Instalação
 
 ~~~~
-
 1 - git clone <br>
 2 - composer update <br>
 3 - Criar .ENV <br>
+~~~~
 
 Você também deve adicionar suas informações de banco de dados e email em seu arquivo .env: <br>
 ~~~~ 
