@@ -1,44 +1,114 @@
-# PSPB
-Candidato de Emprego
+# PSPB para Laravel 5.4
+Candidato de Emprego, implemente um pequeno sistema para gerenciamento de currículos utilizando o conceito de micro serviços
 
-1 - git clone <br>
-2 - composer update <br>
-3 - Criar .ENV <br>
-4 - Configuração de .ENV (BD e MAIL) <br>
-    BD - Usuario e Senha de banco de dados <br>
-    MAIL -  MAIL_DRIVER=smtp <br>
-            MAIL_HOST=smtp.gmail.com <br>
-            MAIL_PORT=587 <br>
-            MAIL_USERNAME=###@gmail.com <br>
-            MAIL_PASSWORD=### <br>
-            MAIL_ENCRYPTION=tls <br>
-5 - php artisan migrate <br>
-6 - php artisan db:seed <br>
-7 - php artisan serve <br><br>
-8 - Login:<br>
-    Email: admin@admin.com <br>
-    Senha: admin <br><br>
-    
-#########################################################
-<br>
-API - Seviços (JSON)
-<br>
-GET<br>
-http://localhost:8000/api/candidato <br>
-http://localhost:8000/api/job <br>
-<br>
-POST<br>
-http://localhost:8000/api/candidato <br>
--> {"nome":"#","email":"#","cpf":"#","telefone":"#","tecnica":"#","sociais":"#","experiencia":"#","arquivo":"Local ou Web","job_id":"#"}<br>
-http://localhost:8000/api/job <br>
--> {"nome":"#","descricao":"#","local":"#","remoto":"Sim ou Não"}
-<br>
-PUT<br>
-http://localhost:8000/api/candidato/1<br>
--> {"nome":"#","email":"#","cpf":"#","telefone":"#","tecnica":"#","sociais":"#","experiencia":"#","arquivo":"Local ou Web","job_id":"#"}<br>
-http://localhost:8000/api/job/1<br>
--> {"nome":"#","descricao":"#","local":"#","remoto":"Sim ou Não"}
-<br>
-DELETE<br>
-http://localhost:8000/api/candidato/1<br>
-http://localhost:8000/api/job/1<br>
+## Servidor:
+Apache 2.4.23 / PHP 7.1.2 / MySQL 5.7.17
+
+## Instalação
+
+~~~~
+git clone
+composer update
+php -r "file_exists('.env') || copy('.env.example', '.env');"
+php artisan key:generate
+
+~~~~
+
+Você também deve adicionar suas informações de banco de dados e email em seu arquivo .env:
+~~~~ 
+BD: 
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=###
+DB_USERNAME=###
+DB_PASSWORD=###
+
+MAIL:
+MAIL_DRIVER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=###@gmail.com
+MAIL_PASSWORD=###
+MAIL_ENCRYPTION=tls
+        
+~~~~ 
+Depois de criar seu banco de dados e fornecer as credenciais, você precisará executar a partir da linha de comando:
+~~~~
+php artisan migrate
+php artisan db:seed
+~~~~
+
+## Para quem usa o MariaDB ou versões mais antigas do MySQL, você pode atingir esse erro ao tentar executar migrações:
+
+#### [Illuminate \ Database \ QueryException] SQLSTATE [42000]: erro de sintaxe ou violação de acesso: 1071 A chave especificada era muito longa; O comprimento máximo da chave é de 767 bytes (SQL: alter table usersadd unique users_email_unique( email))
+
+Migrações para corrigir isso, tudo o que você precisa fazer é editar seu AppServiceProvider.php
+
+~~~~
+use Illuminate\Support\Facades\Schema;
+
+public function boot()
+{
+    Schema::defaultStringLength(191);
+}
+~~~~
+Depois disso, tudo deve funcionar de forma normal.
+
+Inicie um servidor de desenvolvimento local com `php artisan serve` E, visite http://localhost:8000
+
+## Login:
+
+Se você prosseguisse com os dados falsos, um usuário deveria ter sido criado para você com as seguintes credenciais de login:
+
+>**email:** `admin@admin.com`   
+>**senha:** `admin`
+
+## API (JSON)
+Micro Serviços (POSTMAN)
+
+## GET (Lista)
+
+#### Candidato
+http://localhost:8000/api/candidato
+#### Job
+http://localhost:8000/api/job
+
+## GET (Buscar)
+
+#### Candidato
+http://localhost:8000/api/candidato/1
+#### Job
+http://localhost:8000/api/job/1
+
+## POST
+#### Candidato
+http://localhost:8000/api/candidato/1
+~~~~
+{"nome":"#","email":"#","cpf":"#","telefone":"#","tecnica":"#","sociais":"#","experiencia":"#","arquivo":"Local ou Web","job_id":"#"}
+~~~~
+#### Job
+http://localhost:8000/api/job/1
+~~~~
+{"nome":"#","descricao":"#","local":"#","remoto":"Sim ou Não"} 
+~~~~
+
+## PUT
+
+#### Candidato
+http://localhost:8000/api/candidato/1
+~~~~
+{"nome":"#","email":"#","cpf":"#","telefone":"#","tecnica":"#","sociais":"#","experiencia":"#","arquivo":"Local ou Web","job_id":"#"}
+~~~~
+#### Job
+http://localhost:8000/api/job/1
+~~~~
+{"nome":"#","descricao":"#","local":"#","remoto":"Sim ou Não"}
+~~~~
+
+## DELETE
+
+#### Candidato
+http://localhost:8000/api/candidato/1
+#### Job
+http://localhost:8000/api/job/1
