@@ -47,6 +47,18 @@
             {!! Form::select('remoto', array('Sim' => 'Sim', 'Não' => 'Não'), null, array('class' => 'form-control')) !!}
         </div>
     </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong>Data Iniciar:</strong>
+            {!! Form::date('data_ini', null, array('class' => 'form-control')) !!}
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong>Data Fim:</strong>
+            {!! Form::date('data_fim', null, array('class' => 'form-control')) !!}
+        </div>
+    </div>
     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
         <button type="submit" class="btn btn-primary">Salvar</button>
     </div>

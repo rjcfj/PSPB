@@ -100,6 +100,7 @@
             @if (Auth::check())
             <a href="{{ url('/home') }}">Home</a>
             @else
+             <a href="#">APP 1</a>
             <a href="{{ url('/login') }}">Login</a>
             @endif
         </div>

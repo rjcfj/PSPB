@@ -36,23 +36,28 @@ class ApiCandidatosController extends Controller
 	{
 
 		$confirmation_code = str_random(30);
+		$candidato = $request->all();
 
 		$nome = $request['nome'];
 		$mail = $request['email'];
 		
 		$file = $request->arquivo;
 
-		$ultimas = substr($file, -4);
+		if($file){
+			$ultimas = substr($file, -4);
 
-		$tirar_ponto = str_replace("." , "" , $ultimas);
+			$tirar_ponto = str_replace("." , "" , $ultimas);
 
-		$data = file_get_contents($file);
-		$uploadfile = base_path().DIRECTORY_SEPARATOR. 'public' .DIRECTORY_SEPARATOR. 'uploads' .DIRECTORY_SEPARATOR. $nome . ' - ' . $mail . '.' . $tirar_ponto;
-		file_put_contents($uploadfile, $data);
+			$data = file_get_contents($file);
+			$uploadfile = base_path().DIRECTORY_SEPARATOR. 'public' .DIRECTORY_SEPARATOR. 'uploads' .DIRECTORY_SEPARATOR. $nome . ' - ' . $mail . '.' . $tirar_ponto;
+			file_put_contents($uploadfile, $data);
+			$candidato['arquivo'] = $nome . ' - ' . $mail . '.' . $tirar_ponto;
+		}else{
 
-		$candidato = $request->all();
+			$candidato['arquivo'] = '';
+		}
+		
 		$candidato['cod_confirmacao'] = $confirmation_code;
-		$candidato['arquivo'] = $nome . ' - ' . $mail . '.' . $tirar_ponto;
 		Candidato::create($candidato);
 
 		$data = array('confirmacao' => $confirmation_code);
@@ -71,14 +76,26 @@ class ApiCandidatosController extends Controller
 			$mail = $request['email'];
 			
 			$candidato = Candidato::findOrFail($id);
+
+			$candidato = $request->all();
 			
 			$file = $request->arquivo;
-			$data = file_get_contents($file);
-			$uploadfile = base_path().DIRECTORY_SEPARATOR. 'public' .DIRECTORY_SEPARATOR. 'uploads' .DIRECTORY_SEPARATOR. $nome . ' - ' . $mail . '.' .'PDF';
-			file_put_contents($uploadfile, $data);
+
+			if($file){
+				$ultimas = substr($file, -4);
+
+				$tirar_ponto = str_replace("." , "" , $ultimas);
+
+				$data = file_get_contents($file);
+				$uploadfile = base_path().DIRECTORY_SEPARATOR. 'public' .DIRECTORY_SEPARATOR. 'uploads' .DIRECTORY_SEPARATOR. $nome . ' - ' . $mail . '.' . $tirar_ponto;
+				file_put_contents($uploadfile, $data);
+				$candidato['arquivo'] = $nome . ' - ' . $mail . '.' . $tirar_ponto;
+			}else{
+
+				$candidato['arquivo'] = '';
+			}
 			
-			$candidato = $request->all();
-			$candidato['arquivo'] = $nome . ' - ' . $mail . '.' .'PDF';
+			
 			
 			Candidato::find($id)->update($candidato);
 

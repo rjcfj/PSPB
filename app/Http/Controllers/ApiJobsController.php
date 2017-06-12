@@ -1,9 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Job;
 use Illuminate\Http\Request;
+
 
 
 class ApiJobsController extends Controller
@@ -29,6 +29,7 @@ class ApiJobsController extends Controller
 
 	public function store(Request $request)
 	{
+
 		$job = new Job();
 		$job->fill($request->all());
 		$job->save();

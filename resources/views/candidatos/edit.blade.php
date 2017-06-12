@@ -21,7 +21,7 @@
             </ul>
         </div>
     @endif
-    {!! Form::model($candidato, ['method' => 'PATCH', 'files' => true), 'route' => ['candidato.update', $candidato->id]]) !!}
+    {!! Form::model($candidato, ['method' => 'PATCH', 'files' => true, 'route' => ['candidato.update', $candidato->id]]) !!}
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
