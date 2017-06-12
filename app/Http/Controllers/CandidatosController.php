@@ -250,11 +250,11 @@ class CandidatosController extends Controller
 
 		curl_close($curl);
 
-		if ($err) {
-			echo "cURL Error #:" . $err;
-		} else {
-			echo $response;
-		}
+		// if ($err) {
+		// 	echo "cURL Error #:" . $err;
+		// } else {
+		// 	echo $response;
+		// }
 
 	}
 }
