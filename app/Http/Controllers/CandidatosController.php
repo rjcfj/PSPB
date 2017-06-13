@@ -75,7 +75,10 @@ class CandidatosController extends Controller
 
 		$imageName = $nome . ' - ' . $mail . '.' . $request->file('arquivo')->getClientOriginalExtension();
 
-		$request->file('arquivo')->move(base_path().DIRECTORY_SEPARATOR. 'public' .DIRECTORY_SEPARATOR. 'uploads' .DIRECTORY_SEPARATOR, $imageName);
+		$url = $request->file('arquivo')->move(base_path().DIRECTORY_SEPARATOR. 'public' .DIRECTORY_SEPARATOR. 'uploads' .DIRECTORY_SEPARATOR, $imageName);
+
+		$file = array($url);
+		$tirar_array = str_replace("Array" , "" , $file[0].['path']);
 
 		$confirmation_code = str_random(30);
 
@@ -91,7 +94,7 @@ class CandidatosController extends Controller
 			$message->to($mail, $nome)->subject('Verifique seu endereço de e-mail');
 		});
 
-		$this->curl('POST', $request, null);
+		$this->curl('POST', $request, $tirar_array, null);
 
 		if(Auth::check()){
 			return redirect()->route('candidato.index')->with('success','Criado com sucesso');
@@ -132,14 +135,17 @@ class CandidatosController extends Controller
 
 		$imageName = $nome . ' - ' . $mail . '.' . $request->file('arquivo')->getClientOriginalExtension();
 
-		$request->file('arquivo')->move(base_path().DIRECTORY_SEPARATOR. 'public' .DIRECTORY_SEPARATOR. 'uploads' .DIRECTORY_SEPARATOR, $imageName);
+		$url = $request->file('arquivo')->move(base_path().DIRECTORY_SEPARATOR. 'public' .DIRECTORY_SEPARATOR. 'uploads' .DIRECTORY_SEPARATOR, $imageName);
 
 		$candidato = $request->all();
 		$candidato['arquivo'] = $imageName;
 
+		$file = array($url);
+		$tirar_array =  str_replace("Array" , "" , $file[0].['path']);
+
 		Candidato::find($id)->update($candidato);
 
-		$this->curl('PUT', $request->all(), $id);
+		$this->curl('PUT', $request, $tirar_array, $id);
 
 		return redirect()->route('candidato.index')->with('success','Atualizado com sucesso');
 	}
@@ -148,7 +154,7 @@ class CandidatosController extends Controller
 
 		Candidato::find($id)->delete();
 
-		$this->curl('DELETE', '', $id);
+		$this->curl('DELETE', '', '', $id);
 
 		return redirect()->route('candidato.index')->with('success','Excluído com sucesso');
 
@@ -169,7 +175,7 @@ class CandidatosController extends Controller
 		
 	}
 
-	public function curl($route, $string, $id) 
+	public function curl($route, $string, $arquivo, $id) 
 	{
 
 		$url = "http://localhost:8080/api/candidato/";
@@ -181,7 +187,7 @@ class CandidatosController extends Controller
 			
 			case "POST":
 
-			$data = array("nome" => $string['nome'], "email" => $string['email'], "cpf" => $string['cpf'], "telefone" => $string['telefone'], "tecnica" => $string['tecnica'], "sociais" => $string['sociais'], "experiencia" => $string['experiencia'], "arquivo" => '', "job_id" => $string['job_id']);
+			$data = array("nome" => $string['nome'], "email" => $string['email'], "cpf" => $string['cpf'], "telefone" => $string['telefone'], "tecnica" => $string['tecnica'], "sociais" => $string['sociais'], "experiencia" => $string['experiencia'], "arquivo" => $arquivo, "job_id" => $string['job_id']);
 			$data_json = json_encode($data);
 
 			curl_setopt_array($curl, array(
@@ -204,7 +210,7 @@ class CandidatosController extends Controller
 
 			case "PUT":
 
-			$data = array("nome" => $string['nome'], "email" => $string['email'], "cpf" => $string['cpf'], "telefone" => $string['telefone'], "tecnica" => $string['tecnica'], "sociais" => $string['sociais'], "experiencia" => $string['experiencia'], "arquivo" => '', "job_id" => $string['job_id']);
+			$data = array("nome" => $string['nome'], "email" => $string['email'], "cpf" => $string['cpf'], "telefone" => $string['telefone'], "tecnica" => $string['tecnica'], "sociais" => $string['sociais'], "experiencia" => $string['experiencia'], "arquivo" => $arquivo, "job_id" => $string['job_id']);
 			$data_json = json_encode($data);
 
 			curl_setopt_array($curl, array(
@@ -250,11 +256,11 @@ class CandidatosController extends Controller
 
 		curl_close($curl);
 
-		// if ($err) {
-		// 	echo "cURL Error #:" . $err;
-		// } else {
-		// 	echo $response;
-		// }
+		if ($err) {
+			echo "cURL Error #:" . $err;
+		} else {
+			echo $response;
+		}
 
 	}
 }
